@@ -169,7 +169,7 @@ void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in de
 	if (x == 0u || x == Nx - 1u || y == 0u || y == Ny - 1u || z == 0u || z == Nz - 1u) lbm.flags[n] = TYPE_E; // all non periodic
 	*/
 	
-	Mesh* body = read_stl(get_exe_path()+"../stl/SIUE_Aeroshell.stl");
+	Mesh* body = read_stl(get_exe_path()+"../stl/Mercury4.stl");
 	Mesh* front_wheels = read_stl(get_exe_path()+"../stl/SolarCar_Tire.stl"); // wheels separated, decals removed and converted to .stl in Microsoft 3D Builder
 	Mesh* back_wheels = read_stl(get_exe_path()+"../stl/SolarCar_Tire.stl"); // to avoid instability from too small gaps: remove front wheel fenders and move out right back wheel a bit
 	const float scale = lbm_length/body->get_bounding_box_size().y; // scale parts
@@ -198,15 +198,15 @@ void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in de
 	while(lbm.get_t()<=units.t(si_T)) { // main simulation loop
 		if(lbm.graphics.next_frame(units.t(si_T), 30.0f)) {
 			lbm.graphics.set_camera_free(float3(0.779346f*(float)Nx, -0.315650f*(float)Ny, 0.329444f*(float)Nz), -27.0f, 19.0f, 100.0f);
-			lbm.graphics.write_frame(get_exe_path()+"export/a/");
+			lbm.graphics.write_frame("/project/tyork_30/exports/a/");
 			lbm.graphics.set_camera_free(float3(0.556877f*(float)Nx, 0.228191f*(float)Ny, 1.159613f*(float)Nz), 19.0f, 53.0f, 100.0f);
-			lbm.graphics.write_frame(get_exe_path()+"export/b/");
+			lbm.graphics.write_frame("/project/tyork_30/exports/b/");
 			lbm.graphics.set_camera_free(float3(0.220650f*(float)Nx, -0.589529f*(float)Ny, 0.085407f*(float)Nz), -72.0f, 16.0f, 86.0f);
-			lbm.graphics.write_frame(get_exe_path()+"export/c/");
+			lbm.graphics.write_frame("/project/tyork_30/exports/c/");
 			const float progress = (float)lbm.get_t()/(float)units.t(si_T);
 			const float A = 75.0f, B = -160.0f;
 			lbm.graphics.set_camera_centered(A+progress*(B-A), -5.0f, 100.0f, 1.648721f);
-			lbm.graphics.write_frame(get_exe_path()+"export/d/");
+			lbm.graphics.write_frame("/project/tyork_30/exports/d/");
 		}
 		lbm.run(1u);
 	}
