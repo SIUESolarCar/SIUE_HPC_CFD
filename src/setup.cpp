@@ -198,15 +198,15 @@ void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in de
 	while(lbm.get_t()<=units.t(si_T)) { // main simulation loop
 		if(lbm.graphics.next_frame(units.t(si_T), 30.0f)) {
 			lbm.graphics.set_camera_free(float3(0.779346f*(float)Nx, -0.315650f*(float)Ny, 0.329444f*(float)Nz), -27.0f, 19.0f, 100.0f);
-			lbm.graphics.write_frame("/project/tyork_30/exports/a/");
+			lbm.graphics.write_frame(get_exe_path()+"export/a/");
 			lbm.graphics.set_camera_free(float3(0.556877f*(float)Nx, 0.228191f*(float)Ny, 1.159613f*(float)Nz), 19.0f, 53.0f, 100.0f);
-			lbm.graphics.write_frame("/project/tyork_30/exports/b/");
+			lbm.graphics.write_frame(get_exe_path()+"export/b/");
 			lbm.graphics.set_camera_free(float3(0.220650f*(float)Nx, -0.589529f*(float)Ny, 0.085407f*(float)Nz), -72.0f, 16.0f, 86.0f);
-			lbm.graphics.write_frame("/project/tyork_30/exports/c/");
+			lbm.graphics.write_frame(get_exe_path()+"export/c/");
 			const float progress = (float)lbm.get_t()/(float)units.t(si_T);
 			const float A = 75.0f, B = -160.0f;
 			lbm.graphics.set_camera_centered(A+progress*(B-A), -5.0f, 100.0f, 1.648721f);
-			lbm.graphics.write_frame("/project/tyork_30/exports/d/");
+			lbm.graphics.write_frame(get_exe_path()+"export/d/");
 		}
 		lbm.run(1u);
 	}
