@@ -158,6 +158,7 @@ void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in de
 	units.set_m_kg_s(lbm_length, lbm_u, 1.0f, si_length, si_u, si_rho);
 	print_info("Re = "+to_string(to_uint(units.si_Re(si_width, si_u, si_nu))));
 	LBM lbm(lbm_N, 1u, 1u, 1u, units.nu(si_nu));
+	//LBM lbm(lbm_N, 1u, 1u, 2u, 1u, 1u, units.nu(si_nu));
 	// ###################################################################################### define geometry ######################################################################################
 	/*
 	const float size = 1.0f * lbm.size().x;
