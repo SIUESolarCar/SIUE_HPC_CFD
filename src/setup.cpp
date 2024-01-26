@@ -166,7 +166,7 @@ void main_setup() { // SIUE_Aeroshell; required extensions in defines.hpp: FP16S
 	const uint Nx = lbm.get_Nx(), Ny = lbm.get_Ny(), Nz = lbm.get_Nz(); parallel_for(lbm.get_N(), [&](ulong n) { uint x = 0u, y = 0u, z = 0u; lbm.coordinates(n, x, y, z);
 	if (lbm.flags[n] != TYPE_S) lbm.u.y[n] = lbm_u;
 	if (x == 0u || x == Nx - 1u || y == 0u || y == Ny - 1u || z == 0u || z == Nz - 1u) lbm.flags[n] = TYPE_E; // all non periodic
-	*/
+	
 	
 	Mesh* body = read_stl(get_exe_path()+"../stl/Mercury4.stl");
 	Mesh* front_wheels = read_stl(get_exe_path()+"../stl/SolarCar_Tire.stl"); // wheels separated, decals removed and converted to .stl in Microsoft 3D Builder
