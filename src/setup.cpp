@@ -51,7 +51,7 @@ void main_setup() { // SIUE_Aeroshell; required extensions in defines.hpp: FP16S
 	// ###################################################################################### define geometry ######################################################################################
 	const float size = 1.0f * lbm.size().x;
 	const float3 center = float3(lbm.center().x, 0.55f * size, lbm.center().z);
-	const float3x3 rotation = float3x3(float3(0, 0, 1), radians(180.0f));
+	const float3x3 rotation = float3x3(float3(0, 0, 1), radians(0.0f));
 	lbm.voxelize_stl(get_exe_path() + "../stl/Mercury4.stl", center, rotation, size);
 	const uint Nx = lbm.get_Nx(), Ny = lbm.get_Ny(), Nz = lbm.get_Nz(); parallel_for(lbm.get_N(), [&](ulong n) { uint x = 0u, y = 0u, z = 0u; lbm.coordinates(n, x, y, z);
 	if (lbm.flags[n] != TYPE_S) lbm.u.y[n] = lbm_u;
