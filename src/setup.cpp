@@ -148,7 +148,7 @@ void main_setup() { // benchmark; required extensions in defines.hpp: BENCHMARK,
 
 void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in defines.hpp: FP16S, EQUILIBRIUM_BOUNDARIES, MOVING_BOUNDARIES, SUBGRID, INTERACTIVE_GRAPHICS or GRAPHICS
 	// ################################################################## define simulation box size, viscosity and volume force ###################################################################
-	const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 880u); // input: simulation box aspect ratio and VRAM occupation in MB, output: grid resolution
+	const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 35000u); // input: simulation box aspect ratio and VRAM occupation in MB, output: grid resolution
 	const float lbm_u = 0.1f;
 	const float lbm_length = 0.8f*(float)lbm_N.y;
 	const float si_T = 0.25f;
@@ -157,8 +157,8 @@ void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in de
 	const float si_nu=1.48E-5f, si_rho=1.225f;
 	units.set_m_kg_s(lbm_length, lbm_u, 1.0f, si_length, si_u, si_rho);
 	print_info("Re = "+to_string(to_uint(units.si_Re(si_width, si_u, si_nu))));
-	LBM lbm(lbm_N, 1u, 1u, 1u, units.nu(si_nu));
-	//LBM lbm(lbm_N, 1u, 1u, 2u, 1u, 1u, units.nu(si_nu));
+	//LBM lbm(lbm_N, 1u, 1u, 1u, units.nu(si_nu));
+	LBM lbm(lbm_N, 1u, 1u, 2u, 1u, 1u, units.nu(si_nu));
 	// ###################################################################################### define geometry ######################################################################################
 	/*
 	const float size = 1.0f * lbm.size().x;
