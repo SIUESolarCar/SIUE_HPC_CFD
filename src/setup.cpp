@@ -47,7 +47,7 @@ void main_setup() { // SIUE_Aeroshell; required extensions in defines.hpp: FP16S
 	//LBM lbm(Nx, Ny, Nz, nu, ...);
 	//LBM lbm(Nx, Ny, Nz, Dx, Dy, Dz, nu, ...);
 	//LBM lbm(lbm_N, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
-	LBM lbm(874, 1748, 437, 1, 2, 1, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
+	LBM lbm(lbm_N, 1u, 2u, 1u, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
 	// ###################################################################################### define geometry ######################################################################################
 	const float size = 1.0f * lbm.size().x;
 	const float3 center = float3(lbm.center().x, 0.55f * size, lbm.center().z);
