@@ -37,24 +37,22 @@ void main_setup() { // benchmark; required extensions in defines.hpp: BENCHMARK,
 
 
 
-/*void main_setup() { // SIUE_Aeroshell; required extensions in defines.hpp: FP16S, EQUILIBRIUM_BOUNDARIES, SUBGRID, INTERACTIVE_GRAPHICS or GRAPHICS
+void main_setup() { // SIUE_Aeroshell; required extensions in defines.hpp: FP16S, EQUILIBRIUM_BOUNDARIES, SUBGRID, INTERACTIVE_GRAPHICS or GRAPHICS
 	// ################################################################## define simulation box size, viscosity and volume force ###################################################################
-	/*const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 880u); // input: simulation box aspect ratio and VRAM occupation in MB, output: grid resolution
-	const float lbm_Re = 100000.0f;
-	const float lbm_u = 0.1f;
-	const uint lbm_T = 50000u;
-	LBM lbm(lbm_N, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
 	//const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 880u); // input: simulation box aspect ratio and VRAM occupation in MB, output: grid resolution
-	const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 3000u);
+	const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 35000u);
 	const float lbm_Re = 1000000.0f;
 	const float lbm_u = 0.1f;
 	const uint lbm_T = 10000u;
-	LBM lbm(lbm_N, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
+	//LBM lbm(Nx, Ny, Nz, nu, ...);
+	//LBM lbm(Nx, Ny, Nz, Dx, Dy, Dz, nu, ...);
+	//LBM lbm(lbm_N, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
+	LBM lbm(lbm_N, 1.0f, 2.0f, 1.0f, units.nu_from_Re(lbm_Re, (float)lbm_N.x, lbm_u));
 	// ###################################################################################### define geometry ######################################################################################
 	const float size = 1.0f * lbm.size().x;
 	const float3 center = float3(lbm.center().x, 0.55f * size, lbm.center().z);
 	const float3x3 rotation = float3x3(float3(0, 0, 1), radians(180.0f));
-	lbm.voxelize_stl(get_exe_path() + "../stl/SIUE_Aeroshell.stl", center, rotation, size);
+	lbm.voxelize_stl(get_exe_path() + "../stl/Mercury4.stl", center, rotation, size);
 	const uint Nx = lbm.get_Nx(), Ny = lbm.get_Ny(), Nz = lbm.get_Nz(); parallel_for(lbm.get_N(), [&](ulong n) { uint x = 0u, y = 0u, z = 0u; lbm.coordinates(n, x, y, z);
 	if (lbm.flags[n] != TYPE_S) lbm.u.y[n] = lbm_u;
 	if (x == 0u || x == Nx - 1u || y == 0u || y == Ny - 1u || z == 0u || z == Nz - 1u) lbm.flags[n] = TYPE_E; // all non periodic
@@ -146,7 +144,7 @@ void main_setup() { // benchmark; required extensions in defines.hpp: BENCHMARK,
 
 
 
-void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in defines.hpp: FP16S, EQUILIBRIUM_BOUNDARIES, MOVING_BOUNDARIES, SUBGRID, INTERACTIVE_GRAPHICS or GRAPHICS
+/*void main_setup() { // SIUE_Aeroshell Spinning wheels; required extensions in defines.hpp: FP16S, EQUILIBRIUM_BOUNDARIES, MOVING_BOUNDARIES, SUBGRID, INTERACTIVE_GRAPHICS or GRAPHICS
 	// ################################################################## define simulation box size, viscosity and volume force ###################################################################
 	const uint3 lbm_N = resolution(float3(1.0f, 2.0f, 0.5f), 35000u); // input: simulation box aspect ratio and VRAM occupation in MB, output: grid resolution
 	const float lbm_u = 0.1f;
